@@ -3,9 +3,6 @@ name: Pubblica profile/README.md come index.html
 on:
   push:
     branches: [main]
-    paths:
-      - profile/README.md
-      - .github/workflows/publish-profile.yml
   workflow_dispatch:
 
 permissions:
