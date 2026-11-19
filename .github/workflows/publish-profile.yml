@@ -1,0 +1,81 @@
+name: Pubblica profile/README.md come index.html
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Converti il Markdown in HTML (API Markdown di GitHub, GFM)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+
+          jq -n --rawfile text profile/README.md \
+                --arg context "${{ github.repository }}" \
+                '{text: $text, mode: "gfm", context: $context}' \
+          | gh api -X POST /markdown --input - > body.html
+
+          title=$(grep -m1 '^# ' profile/README.md | sed 's/^# //' || true)
+          title=${title:-${{ github.repository_owner }}}
+
+          {
+            cat <<HTML
+          <!DOCTYPE html>
+          <html lang="it">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>${title}</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown.min.css">
+            <style>
+              body { margin: 0; }
+              .markdown-body { box-sizing: border-box; min-width: 200px; max-width: 980px; margin: 0 auto; padding: 45px; }
+              @media (max-width: 767px) { .markdown-body { padding: 15px; } }
+            </style>
+          </head>
+          <body>
+          <article class="markdown-body">
+          HTML
+            cat body.html
+            cat <<HTML
+          </article>
+          </body>
+          </html>
+          HTML
+          } > _site/index.html
+
+          touch _site/.nojekyll
+
+      - name: Carica l'artefatto per GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Pubblica su GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
