@@ -11,8 +11,9 @@ Il software contenuto in questa organizzazione è sviluppato da **Daniele Lolli 
 Se sei un programmatore e ami il Baskin, o semplicemente hai voglia di dare una mano, puoi candidarti per entrare nell'organizzazione: scrivi a **daniele.lolli [at] eisi [dot] it** e raccontaci come vorresti aiutare. Ogni contributo è benvenuto!
 
 Per maggiori informazioni sul Baskin:
-- 🌐 [eisi.it](https://eisi.it) – EISI, Ente Italiano Sport Inclusivi, riconosciuto dal Comitato Italiano Paralimpico (CIP)
-- 🌐 [baskin.it](https://baskin.it)
+- 🌐 [eisi.it](https://eisi.it) – *Ente Italiano Sport Inclusivi* (EISI), riconosciuto dal Comitato Italiano Paralimpico (CIP)
+- 🌐 [baskin.it](https://baskin.it) – *Associazione Baskin ODV*
+- 💻 [Repository dell'organizzazione](https://github.com/orgs/baskinsoftware/repositories)
 
 ---
 
@@ -27,5 +28,6 @@ The software in this organization is developed by **Daniele Lolli ([UncleDan](ht
 If you are a developer who loves Baskin, or you are simply eager to help, you can apply to join the organization: write to **daniele.lolli [at] eisi [dot] it** and tell us how you would like to help. Every contribution is welcome!
 
 For more information about Baskin:
-- 🌐 [eisi.it](https://eisi.it) – EISI, Italian Inclusive Sports Body, recognized by the Italian Paralympic Committee (CIP)
-- 🌐 [baskin.it](https://baskin.it)
+- 🌐 [eisi.it](https://eisi.it) – *Italian Inclusive Sports Body* (EISI), recognized by the Italian Paralympic Committee (CIP)
+- 🌐 [baskin.it](https://baskin.it) – *Associazione Baskin ODV*
+- 💻 [Organization repositories](https://github.com/orgs/baskinsoftware/repositories)
